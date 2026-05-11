@@ -1,0 +1,332 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+    background: linear-gradient(to top, #4facfe, #00f2fe);
+}
+
+.app {
+    text-align: center;
+    color: white;
+}
+
+.search-box {
+    margin-bottom: 30px;
+}
+
+input {
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    width: 200px;
+    outline: none;
+}
+
+button {
+    padding: 12px 15px;
+    border: none;
+    border-radius: 10px;
+    background: #111;
+    color: white;
+    cursor: pointer;
+}
+
+.weather-box h1 {
+    font-size: 4rem;
+}
+
+.weather-box h2 {
+    font-size: 2rem;
+}
+
+.info {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+/* EFFECTS LAYER */
+
+#effects {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+/* CLOUDS */
+
+.cloud {
+    position: absolute;
+    width: 250px;
+    height: 80px;
+    background: rgba(255,255,255,0.35);
+    border-radius: 100px;
+    filter: blur(2px);
+    animation: moveCloud linear infinite;
+}
+
+.cloud::before,
+.cloud::after {
+    content: "";
+    position: absolute;
+    background: rgba(255,255,255,0.35);
+    border-radius: 50%;
+}
+
+.cloud::before {
+    width: 100px;
+    height: 100px;
+    top: -40px;
+    left: 30px;
+}
+
+.cloud::after {
+    width: 120px;
+    height: 120px;
+    top: -50px;
+    right: 30px;
+}
+
+@keyframes moveCloud {
+    from {
+        transform: translateX(-400px);
+    }
+
+    to {
+        transform: translateX(120vw);
+    }
+}
+
+/* RAIN */
+
+.rain {
+    position: absolute;
+    width: 2px;
+    height: 80px;
+    background: rgba(255,255,255,0.5);
+    animation: rainFall linear infinite;
+}
+
+@keyframes rainFall {
+    from {
+        transform: translateY(-100px);
+    }
+
+    to {
+        transform: translateY(110vh);
+    }
+}
+
+/* SNOW */
+
+.snow {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: white;
+    border-radius: 50%;
+    animation: snowFall linear infinite;
+}
+
+@keyframes snowFall {
+    from {
+        transform: translateY(-20px);
+    }
+
+    to {
+        transform: translateY(110vh);
+    }
+}
+
+/* SUN GLOW */
+
+.sun {
+    position: absolute;
+    top: 80px;
+    right: 80px;
+    width: 140px;
+    height: 140px;
+    background: rgba(255,255,100,0.9);
+    border-radius: 50%;
+    box-shadow: 0 0 80px rgba(255,255,100,0.8);
+    animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.08);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+.cities-panel {
+    position: absolute;
+    left: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: 200px;
+    padding: 20px;
+
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(15px);
+
+    border-radius: 20px;
+    color: white;
+
+    z-index: 10;
+}
+
+.cities-panel h3 {
+    margin-bottom: 15px;
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+.city-card {
+    padding: 10px;
+    margin-bottom: 10px;
+
+    background: rgba(255,255,255,0.15);
+    border-radius: 12px;
+
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.city-card:hover {
+    background: rgba(255,255,255,0.3);
+}
+.right-panel {
+    position: absolute;
+    right: 20px;
+    top: 65%;
+    transform: translateY(-50%);
+
+    width: 200px;
+    padding: 20px;
+
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(15px);
+
+    border-radius: 20px;
+    color: white;
+
+    z-index: 10;
+}
+
+.right-panel h3 {
+    margin-bottom: 15px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+.detail {
+    margin-bottom: 12px;
+    font-size: 13px;
+    opacity: 0.9;
+}
+.clock-box {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    text-align: center;
+}
+
+.big-clock {
+    font-size: 26px;
+    font-weight: bold;
+    letter-spacing: 2px;
+
+    background: rgba(255,255,255,0.15);
+    padding: 10px;
+    border-radius: 12px;
+
+    margin-top: 10px;
+}
+.forecast {
+    margin-top: 25px;
+    width: 100%;
+    color: white;
+    text-align: center;
+}
+
+#forecastList {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 10px;
+}
+
+.day-card {
+    min-width: 120px;
+    height: 140px;
+
+    border-radius: 18px;
+    overflow: hidden;
+
+    position: relative;
+
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    color: white;
+    font-size: 14px;
+}
+
+/* تصویر پس‌زمینه داخل کارت */
+.day-card img.bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    top: 0;
+    left: 0;
+
+    opacity: 0.35;
+}
+
+/* متن روی عکس */
+.day-card .content {
+    position: relative;
+    z-index: 2;
+}
+.map-modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 999;
+}
+
+#map {
+    width: 80%;
+    height: 70%;
+    border-radius: 15px;
+}

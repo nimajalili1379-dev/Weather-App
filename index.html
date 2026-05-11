@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weather App</title>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+</head>
+
+<body id="body">
+<div id="effects"></div>
+<div class="cities-panel">
+    <h3>World Capitals</h3>
+    <div id="citiesList"></div>
+</div>
+<div class="right-panel">
+
+    <h3>Weather Details</h3>
+
+    <div class="detail">
+        🌡 Pressure: <span id="pressure">--</span>
+    </div>
+
+    <div class="detail">
+        👁 Visibility: <span id="visibility">--</span>
+    </div>
+
+    <div class="detail">
+        🌅 Sunrise: <span id="sunrise">--</span>
+    </div>
+
+    <div class="detail">
+        🌇 Sunset: <span id="sunset">--</span>
+    </div>
+    <div class="clock-box">
+    <div id="localTime" class="big-clock">--:--:--</div>
+</div>
+
+</div>
+
+<div class="app">
+
+    <div class="forecast">
+
+    <h3>5 Day Forecast</h3>
+
+    <div id="forecastList"></div>
+
+</div>
+    <div class="search-box">
+        <input type="text" id="cityInput" placeholder="Search city...">
+        <button onclick="getWeather()">Search</button>
+        <button onclick="openMap()">🗺</button>
+    </div>
+    
+    <div class="weather-box">
+        <img id="weatherIcon" style="width:100px; margin:10px 0;">
+        <h1 id="temp">--°C</h1>
+        <h2 id="city">City</h2>
+
+        <p id="desc">Weather</p>
+
+        <div class="info">
+            <span>💧 <span id="humidity">--%</span></span>
+            <span>💨 <span id="wind">-- km/h</span></span>
+        </div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+<div id="mapModal" class="map-modal">
+    <div id="map"></div>
+</div>
+</html>
